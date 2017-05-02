@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container is-fluid">
     <nav class="nav is-medium">
       <div class="nav-left">
         <a class="nav-item">

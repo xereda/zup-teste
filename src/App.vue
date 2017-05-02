@@ -22,6 +22,7 @@ export default {
     }
   },
   mounted () {
+    console.log('app.vue ---')
     this.showHero = true
   },
   methods: {

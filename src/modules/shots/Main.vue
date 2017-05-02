@@ -2,36 +2,88 @@
   <div class="">
     <div class="columns is-mobile is-multiline">
       <div class="column is-narrow" v-for="shot in shots" :style="'background-color: ' + shot.color">
-        <dribbble-card @click.native="openDetail(shot.index)" class="dribbble-card"></dribbble-card>
+        <dribbble-card @click.native="openDetail(shot.index)"
+                       :card-width="getCardWidth"
+                       :image="isSmallView ? shot.images.small : shot.images.large"
+                       :likes="shot.likes"
+                       :comments="shot.comments"
+                       :user-name="shot.user.name"
+                       :user-avatar="shot.user.avatar"
+                       class="dribbble-card"></dribbble-card>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import DribbbleCard from '@/components/Card.vue'
+import { getAllPaged as getShots } from '@/services/shots'
+
 export default {
   name: 'DribbbleShotsList',
   data () {
     return {
       shots: [
-        { index: 0, color: 'rgb(92, 251, 183)' },
-        { index: 1, color: 'rgb(238, 84, 50)' },
-        { index: 2, color: 'rgb(255, 245, 0)' },
-        { index: 3, color: 'rgb(0, 201, 255)' },
-        { index: 4, color: 'rgb(53, 81, 152)' },
-        { index: 5, color: 'rgb(92, 66, 156)' },
-        { index: 6, color: 'rgb(252, 18, 236)' },
-        { index: 7, color: 'rgb(255, 0, 15)' },
-        { index: 8, color: 'rgb(0, 0, 0)' },
-        { index: 9, color: 'rgb(179, 179, 179)' },
-        { index: 10, color: 'rgb(137, 185, 190)' }
-      ]
+      ],
+      filters: {},
+      currentPage: 0,
+      loading: false
     }
+  },
+  mounted () {
+    console.log('modulo shots')
+    this.fetchShots()
   },
   methods: {
     openDetail (shot) {
       console.log('vai abrir os detalhes do shot: ', shot)
+    },
+    fetchShots () {
+      this.loading = true
+      getShots(this.currentPage, this.config.limitePerPage, this.filters)
+        .then(response => response.data)
+        .then(data => {
+          // console.log('data: ', data)
+          this.hydrateSchema(data)
+          return data
+        })
+        .then(() => {
+          this.loading = false
+        })
+    },
+    hydrateSchema (data) {
+      data.forEach((e) => {
+        const shotObject = {
+          id: e.id,
+          title: e.title,
+          description: e.description,
+          images: {
+            small: e.images.teaser,
+            large: e.images.hidpi
+          },
+          comments: e.comments_count,
+          likes: e.likes_count,
+          user: {
+            id: e.user.id,
+            name: e.user.name,
+            username: e.user.username,
+            avatar: e.user.avatar_url
+          }
+        }
+        console.log('vai dar push nisso aqui: ', shotObject)
+        this.shots.push(shotObject)
+      })
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'isSmallView',
+      'config'
+    ]),
+    getCardWidth () {
+      if (this.isSmallView === true) return this.config.smallSize
+      return this.config.largeSize
     }
   },
   components: {
@@ -40,10 +92,7 @@ export default {
 }
 </script>
 
-<style lang="css">
-  .card {
-    width: 200px;
-  }
+<style lang="scss">
   .dribbble-card {
     cursor: pointer;
   }

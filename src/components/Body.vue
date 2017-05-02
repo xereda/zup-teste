@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <div class="container">
+    <div class="container is-fluid">
       <router-view></router-view>
       <dribbble-floating-button></dribbble-floating-button>
     </div>
@@ -14,6 +14,9 @@ export default {
   name: 'DribbbleBody',
   components: {
     DribbbleFloatingButton
+  },
+  mounted () {
+    console.log('Body.vue')
   }
 }
 </script>
