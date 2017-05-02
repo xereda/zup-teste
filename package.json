@@ -19,7 +19,8 @@
     "vue-scroll": "^2.0.2",
     "vue-scrollto": "^2.6.7",
     "vue-switches": "^1.1.4",
-    "vuelidate": "^0.4.3"
+    "vuelidate": "^0.4.3",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

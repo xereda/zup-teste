@@ -17,8 +17,8 @@
         <nav class="tabs is-boxed">
           <div class="container">
             <ul>
-              <li class="is-active"><a>Small view</a></li>
-              <li><a>Large view</a></li>
+              <li :class="{ 'is-active': isSmallView }"><a @click="updateStateView('small')">Small view</a></li>
+              <li :class="{ 'is-active': isLargeView }"><a @click="updateStateView('large')">Large view</a></li>
             </ul>
           </div>
         </nav>
@@ -28,8 +28,25 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
-  name: 'DribbbleHero'
+  name: 'DribbbleHero',
+  methods: {
+    ...mapActions([
+      'updateStateView'
+    ])
+  },
+  computed: {
+    ...mapGetters([
+      'stateView'
+    ]),
+    isSmallView () {
+      return this.stateView === 'small'
+    },
+    isLargeView () {
+      return this.stateView === 'large'
+    }
+  }
 }
 </script>
 
