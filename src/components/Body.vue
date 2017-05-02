@@ -1,27 +1,19 @@
 <template>
   <section class="section">
     <div class="container">
-      <jmob-introduction></jmob-introduction>
-      <jmob-expertise></jmob-expertise>
-      <hr>
-      <jmob-contact></jmob-contact>
-      <jmob-floating-button></jmob-floating-button>
+      <router-view></router-view>
+      <dribbble-floating-button></dribbble-floating-button>
     </div>
   </section>
 </template>
 
 <script>
-import JmobIntroduction from './Introduction.vue'
-import JmobExpertise from './Expertise.vue'
-import JmobContact from './Contact.vue'
-import JmobFloatingButton from './FloatingButton.vue'
+import DribbbleFloatingButton from './FloatingButton.vue'
 
 export default {
+  name: 'DribbbleBody',
   components: {
-    JmobIntroduction,
-    JmobExpertise,
-    JmobContact,
-    JmobFloatingButton
+    DribbbleFloatingButton
   }
 }
 </script>

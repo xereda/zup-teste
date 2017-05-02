@@ -1,46 +1,57 @@
 <template>
-  <transition name="fade">
-    <div class="card" :id="anchorName"  v-show="showCard">
-      <div class="card-image">
-        <figure class="image is-4by3">
-          <img :src="image" alt="Image">
-        </figure>
-      </div>
-      <header class="card-header">
-        <p class="card-header-title">{{ title }}</p>
-      </header>
-      <div class="card-content">
-        <div class="content" v-html="content">
-
+  <div class="card">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
+      </figure>
+    </div>
+    <div class="card-content card-content-custom">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-24x24">
+            <img class="image-custom" src="http://bulma.io/images/placeholders/96x96.png" alt="Image">
+          </figure>
+        </div>
+        <div class="media-content">
+          <div class="content is-small">
+            <p class="">John Smith</p>
+          </div>
         </div>
       </div>
     </div>
-  </transition>
-</template>
+    <footer class="card-footer">
+      <p class="card-footer-item">
+        <a class="button is-small">
+          <span class="icon is-small">
+            <i class="fa fa-heart-o"></i>
+          </span>
+          <span>222</span>
+        </a>
+      </p>
+      <p class="card-footer-item">
+        <a class="button is-small">
+          <span class="icon is-small">
+            <i class="fa fa-comment-o"></i>
+          </span>
+          <span>222</span>
+        </a>
+      </p>
+    </footer>
+  </div></template>
 
 <script>
 export default {
-  data () {
-    return {
-      showCard: false
-    }
-  },
-  mounted () {
-    setTimeout(() => {
-      this.showCard = true
-    }, this.lazyTime)
-  },
-  computed: {
-  },
-  props: [
-    'image',
-    'title',
-    'content',
-    'anchorName',
-    'lazyTime'
-  ]
+  name: 'DribbbleCard',
+  methods: {
+  }
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
+  .card-content-custom {
+    padding: 10px !important;
+  }
+  .image-custom {
+    border-radius: 50%;
+  }
 </style>

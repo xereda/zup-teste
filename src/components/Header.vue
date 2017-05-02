@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <nav class="nav">
+    <nav class="nav is-medium">
       <div class="nav-left">
         <a class="nav-item">
-          <img :src="'static/images/header.svg'" class="logo-header" alt="Bulma logo">
+          <img :src="'static/images/dribbble_color.svg'" class="logo-header" alt="Bulma logo">
         </a>
       </div>
 
@@ -16,6 +16,11 @@
         <a class="nav-item">
           <span class="icon">
             <i class="fa fa-twitter"></i>
+          </span>
+        </a>
+        <a class="nav-item">
+          <span class="icon">
+            <i class="fa fa-linkedin"></i>
           </span>
         </a>
       </div>
@@ -69,6 +74,7 @@ import VueScrollTo from 'vue-scrollto'
 Vue.use(VueScrollTo)
 
 export default {
+  name: 'DribbbleHeader',
   data () {
     return {
       isActiveSideMenu: false,

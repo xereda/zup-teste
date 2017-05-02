@@ -1,21 +1,21 @@
 <template>
   <div>
     <div id="top"></div>
-    <jmob-header></jmob-header>
-    <jmob-hero v-show="showHero"></jmob-hero>
-    <jmob-body></jmob-body>
+    <dribbble-header></dribbble-header>
+    <dribbble-hero v-show="showHero"></dribbble-hero>
+    <dribbble-body></dribbble-body>
   </div>
 </template>
 
 <script>
 import 'bulma'
 import 'font-awesome/scss/font-awesome.scss'
-import JmobHeader from './components/Header.vue'
-import JmobHero from './components/Hero.vue'
-import JmobBody from './components/Body.vue'
+import DribbbleHeader from './components/Header.vue'
+import DribbbleHero from './components/Hero.vue'
+import DribbbleBody from './components/Body.vue'
 
 export default {
-  name: 'JmobMain',
+  name: 'Main',
   data () {
     return {
       showHero: false
@@ -27,9 +27,9 @@ export default {
   methods: {
   },
   components: {
-    JmobHeader,
-    JmobHero,
-    JmobBody
+    DribbbleHeader,
+    DribbbleHero,
+    DribbbleBody
   }
 }
 </script>

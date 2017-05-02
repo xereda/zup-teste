@@ -15,6 +15,7 @@
 
 <script>
 export default {
+  name: 'DribbbleFloatingButton',
   data () {
     return {
       scrolled: false
