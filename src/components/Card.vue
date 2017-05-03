@@ -1,6 +1,6 @@
 <template>
   <div class="card" :style="'width:' + cardWidth + ';'">
-    <div class="card-image">
+    <div class="card-image custom-card-background">
       <figure class="image is-4by3">
         <img :src="image" alt="Image">
       </figure>
@@ -45,6 +45,7 @@ export default {
   methods: {
   },
   props: [
+    'shotId',
     'cardWidth',
     'image',
     'likes',
@@ -61,5 +62,8 @@ export default {
   }
   .image-custom {
     border-radius: 50%;
+  }
+  .custom-card-background {
+    background-image: url('../../static/images/backgroundImage.svg');
   }
 </style>

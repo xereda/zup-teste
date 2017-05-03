@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <section class="hero is-small is-primary is-bold">
-      <div class="hero-body" id="home">
+      <div class="hero-body custom-margin-left" id="home">
         <div class="container is-fluid">
           <img :src="'static/images/dribbble.svg'" class="logo-hero" alt="Bulma logo">
           <!-- <h1 class="title">
@@ -13,12 +13,12 @@
         </div>
       </div>
       <!-- Hero footer: will stick at the bottom -->
-      <div class="hero-foot" style="margin-left:20px;">
+      <div class="hero-foot custom-margin-left">
         <nav class="tabs is-boxed">
           <div class="container is-fluid">
             <ul>
-              <li :class="{ 'is-active': isSmallView }"><a @click="updateStateView('small')">Small view</a></li>
-              <li :class="{ 'is-active': isLargeView }"><a @click="updateStateView('large')">Large view</a></li>
+              <li :class="{ 'is-active': isSmallView }"><a @click="updateViewMode('small')">Small view</a></li>
+              <li :class="{ 'is-active': isLargeView }"><a @click="updateViewMode('large')">Large view</a></li>
             </ul>
           </div>
         </nav>
@@ -34,7 +34,12 @@ export default {
   methods: {
     ...mapActions([
       'updateStateView'
-    ])
+    ]),
+    updateViewMode (size) {
+      console.log('rota: ', this.$route)
+      if (this.$route.name !== 'shots') this.$router.push({ name: 'shots' })
+      this.updateStateView(size)
+    }
   },
   computed: {
     ...mapGetters([
@@ -49,5 +54,8 @@ export default {
 <style lang="css">
   .logo-hero {
     width: 200px;
+  }
+  .custom-margin-left {
+    margin-left: 20px;
   }
 </style>

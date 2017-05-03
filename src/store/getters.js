@@ -1,7 +1,23 @@
 export default {
+  shots: state => {
+    const { shots } = state
+    return shots
+  },
   stateView: state => {
     const { states } = state
     return states.view
+  },
+  loading: state => {
+    const { states } = state
+    return states.loading
+  },
+  currentPag: state => {
+    const { states } = state
+    return states.currentPag
+  },
+  scrollPosition: state => {
+    const { states } = state
+    return states.scrollPosition
   },
   isSmallView: state => {
     const { states } = state

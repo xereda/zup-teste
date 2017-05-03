@@ -36,7 +36,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.4);
 }
 
 /* :not(:required) hides these rules from IE9 and below */
@@ -52,7 +52,7 @@ export default {
 .loading:not(:required):after {
   content: '';
   display: block;
-  font-size: 10px;
+  font-size: 20px;
   width: 1em;
   height: 1em;
   margin-top: -0.5em;
@@ -62,8 +62,8 @@ export default {
   -o-animation: spinner 1500ms infinite linear;
   animation: spinner 1500ms infinite linear;
   border-radius: 0.5em;
-  -webkit-box-shadow: rgb(22, 77, 105) 1.5em 0 0 0, rgb(22, 77, 105) 1.1em 1.1em 0 0, rgb(22, 77, 105) 0 1.5em 0 0, rgb(22, 77, 105) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgb(22, 77, 105) 0 -1.5em 0 0, rgb(22, 77, 105) 1.1em -1.1em 0 0;
-  box-shadow: rgb(22, 77, 105) 1.5em 0 0 0, rgb(22, 77, 105) 1.1em 1.1em 0 0, rgb(22, 77, 105) 0 1.5em 0 0, rgb(22, 77, 105) -1.1em 1.1em 0 0, rgb(22, 77, 105) -1.5em 0 0 0, rgb(22, 77, 105) -1.1em -1.1em 0 0, rgb(22, 77, 105) 0 -1.5em 0 0, rgb(22, 77, 105) 1.1em -1.1em 0 0;
+  -webkit-box-shadow: #00c5a2 1.5em 0 0 0, #00c5a2 1.1em 1.1em 0 0, #00c5a2 0 1.5em 0 0, #00c5a2 -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, #00c5a2 0 -1.5em 0 0, #00c5a2 1.1em -1.1em 0 0;
+  box-shadow: #00c5a2 1.5em 0 0 0, #00c5a2 1.1em 1.1em 0 0, #00c5a2 0 1.5em 0 0, #00c5a2 -1.1em 1.1em 0 0, #00c5a2 -1.5em 0 0 0, #00c5a2 -1.1em -1.1em 0 0, #00c5a2 0 -1.5em 0 0, #00c5a2 1.1em -1.1em 0 0;
 }
 
 /* Animation */

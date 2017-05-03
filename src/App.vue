@@ -8,6 +8,10 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import VueScrollTo from 'vue-scrollto'
+Vue.use(VueScrollTo)
+
 import 'bulma'
 import 'font-awesome/scss/font-awesome.scss'
 import DribbbleHeader from './components/Header.vue'

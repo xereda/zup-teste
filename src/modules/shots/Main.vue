@@ -1,47 +1,63 @@
 <template>
   <div class="">
     <div class="columns is-mobile is-multiline">
-      <div class="column is-narrow" v-for="shot in shots" :style="'background-color: ' + shot.color">
-        <dribbble-card @click.native="openDetail(shot.index)"
+      <div class="column is-narrow" :ref="shot.id" v-for="shot in shots" :style="'background-color: ' + shot.color">
+        <dribbble-card @click.native="openDetail(shot.id)"
+                       :shot-id="shot.id"
                        :card-width="getCardWidth"
-                       :image="isSmallView ? shot.images.small : shot.images.large"
+                       :image="getImagePreview(shot.images)"
                        :likes="shot.likes"
                        :comments="shot.comments"
                        :user-name="shot.user.name"
                        :user-avatar="shot.user.avatar"
                        class="dribbble-card"></dribbble-card>
       </div>
+      <div v-infinite-scroll="fetchShots" infinite-scroll-distance="10">
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import Vue from 'vue'
+import methodsMixins from '@/mixins/methods'
+import computedMixins from '@/mixins/computed'
 import DribbbleCard from '@/components/Card.vue'
 import { getAllPaged as getShots } from '@/services/shots'
 
+import infiniteScroll from 'vue-infinite-scroll'
+Vue.use(infiniteScroll)
+
+import { isEmpty } from 'lodash'
+
 export default {
   name: 'DribbbleShotsList',
+  mixins: [
+    methodsMixins,
+    computedMixins
+  ],
   data () {
     return {
-      shots: [
-      ],
-      filters: {},
-      currentPage: 0,
-      loading: false
     }
   },
   mounted () {
-    console.log('modulo shots')
-    this.fetchShots()
+    window.scrollTo(0, this.scrollPosition)
   },
   methods: {
-    openDetail (shot) {
-      console.log('vai abrir os detalhes do shot: ', shot)
+    openDetail (shotId) {
+      this.setScrollPosition(window.scrollY)
+      this.$router.push({ name: 'shotDetail', params: { shotId: shotId } })
+    },
+    getImagePreview (images) {
+      if (this.isSmallView && isEmpty(images.small) === false) return images.small
+      if (isEmpty(images.large) === false) return images.large
+      if (isEmpty(images.normal) === false) return images.normal
+      return this.config.defaultImagePreview
+      // console.log(isEmpty)
     },
     fetchShots () {
-      this.loading = true
-      getShots(this.currentPage, this.config.limitePerPage, this.filters)
+      this.setLoading(true)
+      getShots(this.currentPag, this.config.limitePerPage, {})
         .then(response => response.data)
         .then(data => {
           // console.log('data: ', data)
@@ -49,7 +65,11 @@ export default {
           return data
         })
         .then(() => {
-          this.loading = false
+          this.setLoading(false)
+          this.setCurrentPag(this.currentPag + 1)
+        })
+        .catch(response => {
+          this.setLoading(false)
         })
     },
     hydrateSchema (data) {
@@ -60,6 +80,7 @@ export default {
           description: e.description,
           images: {
             small: e.images.teaser,
+            normal: e.images.normal,
             large: e.images.hidpi
           },
           comments: e.comments_count,
@@ -71,23 +92,15 @@ export default {
             avatar: e.user.avatar_url
           }
         }
-        console.log('vai dar push nisso aqui: ', shotObject)
-        this.shots.push(shotObject)
+        this.addShot(shotObject)
       })
-    }
-  },
-  computed: {
-    ...mapGetters([
-      'isSmallView',
-      'config'
-    ]),
-    getCardWidth () {
-      if (this.isSmallView === true) return this.config.smallSize
-      return this.config.largeSize
     }
   },
   components: {
     DribbbleCard
+  },
+  directives: {
+    infiniteScroll
   }
 }
 </script>
