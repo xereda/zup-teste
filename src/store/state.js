@@ -1,10 +1,13 @@
 export default {
   shots: [],
   states: {
-    view: 'small',
     loading: false,
     currentPag: 1,
-    scrollPosition: 0
+    view: 'small',
+    scrollPosition: {
+      small: 0,
+      large: 0
+    }
   },
   config: {
     smallSize: '200px',

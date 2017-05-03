@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <breadcrumbs :objectLinks="breadcrumbsLinks"></breadcrumbs>
+    <breadcrumbs :objectLinks="breadcrumbsLinks" @after-action="setScrollPosition"></breadcrumbs>
     <dribbble-card-detail :user="user" :shot="shot"></dribbble-card-detail>
 
   </div>
@@ -8,7 +8,7 @@
 
 <script>
 import { getShot } from '@/services/shots'
-import methodsMixins from '@/mixins/methods'
+import { methodsMixins, computedMixins } from '@/mixins/main'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import DribbbleCardDetail from './components/CardDetail.vue'
 
@@ -31,13 +31,14 @@ export default {
         tags: []
       },
       breadcrumbsLinks: [
-        { go: -1, name: 'Shots', activedLink: true },
+        { go: -1, name: 'Shots', activedLink: true, afterAction: 'after-action' },
         { name: 'Detalhes', activedLink: false }
       ]
     }
   },
   mixins: [
-    methodsMixins
+    methodsMixins,
+    computedMixins
   ],
   mounted () {
     this.getShotDetail()

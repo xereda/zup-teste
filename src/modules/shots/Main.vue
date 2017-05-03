@@ -20,8 +20,7 @@
 
 <script>
 import Vue from 'vue'
-import methodsMixins from '@/mixins/methods'
-import computedMixins from '@/mixins/computed'
+import { methodsMixins, computedMixins } from '@/mixins/main'
 import DribbbleCard from '@/components/Card.vue'
 import { getAllPaged as getShots } from '@/services/shots'
 
@@ -40,12 +39,10 @@ export default {
     return {
     }
   },
-  mounted () {
-    window.scrollTo(0, this.scrollPosition)
-  },
   methods: {
     openDetail (shotId) {
-      this.setScrollPosition(window.scrollY)
+      // console.log(this.stateView)
+      this.isSmallView ? this.setScrollPositionSmall(window.scrollY) : this.setScrollPositionLarge(window.scrollY)
       this.$router.push({ name: 'shotDetail', params: { shotId: shotId } })
     },
     getImagePreview (images) {

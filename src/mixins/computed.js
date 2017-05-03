@@ -4,6 +4,7 @@ export default {
     ...mapGetters([
       'shots',
       'isSmallView',
+      'isLargeView',
       'config',
       'loading',
       'currentPag',

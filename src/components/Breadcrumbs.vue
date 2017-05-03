@@ -1,4 +1,4 @@
-<template lang="html">
+ <template lang="html">
   <div class="main">
     <span>Voce está em:</span><br class="is-hidden-tablet" />
     <a v-for="(link, index) in links"
@@ -22,6 +22,7 @@ export default {
       return (this.links.length - 1) === index
     },
     goTo (link) {
+      if (link.afterAction !== undefined) this.$emit(link.afterAction)
       if (link.route !== undefined) this.$router.push({ path: link.route })
       if (link.go !== undefined) this.$router.go(link.go)
     }

@@ -28,22 +28,26 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { methodsMixins, computedMixins } from '@/mixins/main'
+import { mapGetters } from 'vuex'
 export default {
   name: 'DribbbleHero',
+  mixins: [
+    methodsMixins,
+    computedMixins
+  ],
   methods: {
-    ...mapActions([
-      'updateStateView'
-    ]),
     updateViewMode (size) {
       console.log('rota: ', this.$route)
       if (this.$route.name !== 'shots') this.$router.push({ name: 'shots' })
       this.updateStateView(size)
+      setTimeout(() => {
+        this.setScrollPosition()
+      }, 10)
     }
   },
   computed: {
     ...mapGetters([
-      'stateView',
       'isSmallView',
       'isLargeView'
     ])

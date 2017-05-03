@@ -8,8 +8,11 @@ export default {
   'SET_CURRENT_PAG' (state, pag) {
     state.states.currentPag = pag
   },
-  'SET_SCROLL_POSITION' (state, pos) {
-    state.states.scrollPosition = pos
+  'SET_SCROLL_POSITION_SMALL' (state, pos) {
+    state.states.scrollPosition.small = pos
+  },
+  'SET_SCROLL_POSITION_LARGE' (state, pos) {
+    state.states.scrollPosition.large = pos
   },
   'ADD_SHOT' (state, shot) {
     state.shots.push(shot)
