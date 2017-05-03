@@ -7,18 +7,23 @@
         </a>
       </div>
 
-      <div class="nav-center is-hidden-tablet-only">
+      <div class="nav-center is-hidden-tablet-only" :href="config.urls.facebook">
         <a class="nav-item">
           <span class="icon">
             <i class="fa fa-facebook"></i>
           </span>
         </a>
-        <a class="nav-item">
+        <a class="nav-item" :href="config.urls.github">
+          <span class="icon">
+            <i class="fa fa-github"></i>
+          </span>
+        </a>
+        <a class="nav-item" :href="config.urls.twitter">
           <span class="icon">
             <i class="fa fa-twitter"></i>
           </span>
         </a>
-        <a class="nav-item">
+        <a class="nav-item" :href="config.urls.linkedin">
           <span class="icon">
             <i class="fa fa-linkedin"></i>
           </span>
@@ -36,15 +41,15 @@
       <!-- This "nav-menu" is hidden on mobile -->
       <!-- Add the modifier "is-active" to display it on mobile -->
       <div id="side-menu" :class="{ 'nav-right': true, 'nav-menu': true, 'is-active': isActiveSideMenu, 'animated': true, 'slideInRight': true, 'slideOutRight': slideOut, }">
-        <a class="nav-item" v-scroll-to="{ el: '#top', onDone: sideBarClose }">
+        <a class="nav-item" @click="goTo('shots')">
           Shot list
         </a>
         <span class="nav-item">
-          <a class="button is-primary" v-scroll-to="{ el: '#contato', onDone: sideBarClose }">
+          <a class="button is-primary" @click="goTo('about')">
             <span class="icon is-small">
-              <i class="fa fa-envelope"></i>
+              <i class="fa fa-user-circle"></i>
             </span>
-            <span>About Developer</span>
+            <span>About The Developer</span>
           </a>
         </span>
       </div>
@@ -53,8 +58,13 @@
 </template>
 
 <script>
+import { computedMixins } from '@/mixins/main'
+
 export default {
   name: 'DribbbleHeader',
+  mixins: [
+    computedMixins
+  ],
   data () {
     return {
       isActiveSideMenu: false,
@@ -62,6 +72,9 @@ export default {
     }
   },
   methods: {
+    goTo (route) {
+      this.$router.push({ name: route })
+    },
     sideBarClose () {
       this.setActiveMenu()
     },

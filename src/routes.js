@@ -5,9 +5,11 @@ Vue.use(VueRouter)
 // import jump from 'jump.js'
 
 import Shots from './modules/shots/route'
+import About from './modules/about/route'
 
 const routes = [
   ...Shots,
+  ...About,
   { path: '*', redirect: '/shots' }
 ]
 
