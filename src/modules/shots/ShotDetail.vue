@@ -28,7 +28,8 @@ export default {
         likes: 0,
         comments: 0,
         data: new Date(),
-        tags: []
+        tags: [],
+        image: ''
       },
       breadcrumbsLinks: [
         { go: -1, name: 'Shots', activedLink: true, afterAction: 'after-action' },
@@ -68,6 +69,11 @@ export default {
       this.shot.id = data.id
       this.shot.title = data.title
       this.shot.description = data.description
+      this.shot.likes = data.likes_count
+      this.shot.comments = data.comments_count
+      this.shot.views = data.views_count
+      this.shot.tags = data.tags
+      this.shot.image = data.images.hidpi || data.images.normal
     }
   },
   components: {

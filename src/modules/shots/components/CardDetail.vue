@@ -1,11 +1,13 @@
 <template>
   <div class="">
-    <dribbble-card-header :user="user" :shot="shot"></dribbble-card-header>
+    <dribbble-card-detail-header :user="user" :shot="shot"></dribbble-card-detail-header>
+    <dribbble-card-detail-body :user="user" :shot="shot"></dribbble-card-detail-body>
   </div>
 </template>
 
 <script>
-import DribbbleCardHeader from './CardHeader.vue'
+import DribbbleCardDetailHeader from './CardDetailHeader.vue'
+import DribbbleCardDetailBody from './CardDetailBody.vue'
 export default {
   name: 'DribbbleCardDetail',
   props: [
@@ -13,7 +15,8 @@ export default {
     'shot'
   ],
   components: {
-    DribbbleCardHeader
+    DribbbleCardDetailHeader,
+    DribbbleCardDetailBody
   }
 }
 </script>

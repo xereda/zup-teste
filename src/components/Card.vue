@@ -37,7 +37,8 @@
         </a>
       </p>
     </footer>
-  </div></template>
+  </div>
+</template>
 
 <script>
 export default {
