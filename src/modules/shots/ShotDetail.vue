@@ -67,8 +67,8 @@ export default {
       this.user.username = data.user.username
       this.user.avatar = data.user.avatar_url
       this.shot.id = data.id
-      this.shot.title = data.title
-      this.shot.description = data.description
+      this.shot.title = data.title || ''
+      this.shot.description = data.description || ''
       this.shot.likes = data.likes_count
       this.shot.comments = data.comments_count
       this.shot.views = data.views_count

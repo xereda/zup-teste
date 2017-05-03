@@ -4,6 +4,7 @@ import jump from 'jump.js'
 export default {
   methods: {
     ...mapActions([
+      'updateFilter',
       'updateStateView',
       'setLoading',
       'setCurrentPag',

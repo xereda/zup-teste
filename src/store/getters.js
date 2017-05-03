@@ -7,6 +7,10 @@ export default {
     const { states } = state
     return states.view
   },
+  filter: state => {
+    const { states } = state
+    return states.filter
+  },
   loading: state => {
     const { states } = state
     return states.loading

@@ -1,8 +1,10 @@
+import { isEmpty } from 'lodash'
 import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters([
       'shots',
+      'filter',
       'isSmallView',
       'isLargeView',
       'config',
@@ -13,6 +15,16 @@ export default {
     getCardWidth () {
       if (this.isSmallView === true) return this.config.smallSize
       return this.config.largeSize
+    },
+    filteredShots () {
+      console.log('o filtro agora eh: ', this.filter)
+      return this.shots.filter(e => {
+        if (this.filter.length === 0) return true
+        if (!isEmpty(e.user.name) && e.user.name.toLowerCase().indexOf(this.filter.toLowerCase()) > -1) return true
+        if (!isEmpty(e.title) && e.title.toLowerCase().indexOf(this.filter.toLowerCase()) > -1) return true
+        // if (!isEmpty(e.description) && e.description.toLowerCase().indexOf(this.filter.toLowerCase()) > -1) return true
+        return false
+      })
     }
   }
 }

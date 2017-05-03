@@ -36,31 +36,15 @@
       <!-- This "nav-menu" is hidden on mobile -->
       <!-- Add the modifier "is-active" to display it on mobile -->
       <div id="side-menu" :class="{ 'nav-right': true, 'nav-menu': true, 'is-active': isActiveSideMenu, 'animated': true, 'slideInRight': true, 'slideOutRight': slideOut, }">
-        <a class="nav-item is-hidden-tablet" v-scroll-to="{ el: '#top', onDone: sideBarClose }">
-          Home
+        <a class="nav-item" v-scroll-to="{ el: '#top', onDone: sideBarClose }">
+          Shot list
         </a>
-        <a class="nav-item" v-scroll-to="{ el: '#atelie', onDone: sideBarClose }">
-          Trabalhe conosco
-        </a>
-        <a class="nav-item" v-scroll-to="{ el: '#atelie', onDone: sideBarClose }">
-          Ateliê de software
-        </a>
-        <a class="nav-item is-hidden-tablet" v-scroll-to="{ el: '#javascript', onDone: sideBarClose }">
-          Javascript
-        </a>
-        <a class="nav-item is-hidden-tablet" v-scroll-to="{ el: '#knowhow', onDone: sideBarClose }">
-          Know-how
-        </a>
-        <a class="nav-item is-hidden-tablet" href="#" v-scroll-to="{ el: '#atuacao', onDone: sideBarClose }">
-          Atuação
-        </a>
-
         <span class="nav-item">
           <a class="button is-primary" v-scroll-to="{ el: '#contato', onDone: sideBarClose }">
             <span class="icon is-small">
               <i class="fa fa-envelope"></i>
             </span>
-            <span>Contato</span>
+            <span>About Developer</span>
           </a>
         </span>
       </div>

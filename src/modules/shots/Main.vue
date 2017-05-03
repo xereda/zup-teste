@@ -1,7 +1,8 @@
 <template>
   <div class="">
+    <dribbble-search :total-shots="filteredShots.length"></dribbble-search>
     <div class="columns is-mobile is-multiline">
-      <div class="column is-narrow" :ref="shot.id" v-for="shot in shots" :style="'background-color: ' + shot.color">
+      <div class="column is-narrow" :ref="shot.id" v-for="shot in filteredShots" :style="'background-color: ' + shot.color">
         <dribbble-card @click.native="openDetail(shot.id)"
                        :shot-id="shot.id"
                        :card-width="getCardWidth"
@@ -22,6 +23,7 @@
 import Vue from 'vue'
 import { methodsMixins, computedMixins } from '@/mixins/main'
 import DribbbleCard from '@/components/Card.vue'
+import DribbbleSearch from '@/components/Search.vue'
 import { getAllPaged as getShots } from '@/services/shots'
 
 import infiniteScroll from 'vue-infinite-scroll'
@@ -73,8 +75,8 @@ export default {
       data.forEach((e) => {
         const shotObject = {
           id: e.id,
-          title: e.title,
-          description: e.description,
+          title: e.title || '',
+          description: e.description || '',
           images: {
             small: e.images.teaser,
             normal: e.images.normal,
@@ -94,7 +96,8 @@ export default {
     }
   },
   components: {
-    DribbbleCard
+    DribbbleCard,
+    DribbbleSearch
   },
   directives: {
     infiniteScroll

@@ -2,6 +2,9 @@ export default {
   updateStateView (context, size) {
     context.commit('UPDATE_STATE_VIEW', size)
   },
+  updateFilter (context, filter) {
+    context.commit('UPDATE_FILTER', filter)
+  },
   setLoading (context, control) {
     context.commit('SET_LOADING', control)
   },
