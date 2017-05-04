@@ -13,7 +13,7 @@
                        :user-avatar="shot.user.avatar"
                        class="dribbble-card"></dribbble-card>
       </div>
-      <div v-infinite-scroll="fetchShots" infinite-scroll-distance="10">
+      <div v-infinite-scroll="fetchShots" infinite-scroll-disabled="disabledInfinite" infinite-scroll-distance="10">
       </div>
     </div>
   </div>
@@ -39,6 +39,11 @@ export default {
   ],
   data () {
     return {
+    }
+  },
+  computed: {
+    disabledInfinite () {
+      return this.filter.length > 0
     }
   },
   methods: {

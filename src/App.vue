@@ -4,6 +4,7 @@
     <dribbble-header></dribbble-header>
     <dribbble-hero v-show="showHero"></dribbble-hero>
     <dribbble-body></dribbble-body>
+    <dribbble-footer></dribbble-footer>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import 'font-awesome/scss/font-awesome.scss'
 import DribbbleHeader from './components/Header.vue'
 import DribbbleHero from './components/Hero.vue'
 import DribbbleBody from './components/Body.vue'
+import DribbbleFooter from './components/Footer.vue'
 
 export default {
   name: 'Main',
@@ -34,18 +36,20 @@ export default {
   components: {
     DribbbleHeader,
     DribbbleHero,
-    DribbbleBody
+    DribbbleBody,
+    DribbbleFooter
   }
 }
 </script>
 
-<style lang="css">
-  /*@import url('https://fonts.googleapis.com/css?family=Quando|Happy+Monkey');*/
+<style lang="scss">
+  @import './scss/config';
+
   .logo-header {
     width: 125px;
   }
   .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s
+    transition: opacity $transition-time
   }
   .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
     opacity: 0

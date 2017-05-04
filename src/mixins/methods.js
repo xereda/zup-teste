@@ -13,9 +13,10 @@ export default {
       'addShot'
     ]),
     setScrollPosition () {
-      console.log('passou... ', new Date())
-      console.log('rota: ', this.$route.name)
       jump(this.isSmallView ? this.scrollPosition.small : this.scrollPosition.large)
+    },
+    goTo (route) {
+      this.$router.push({ name: route })
     }
   }
 }

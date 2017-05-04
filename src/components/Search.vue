@@ -1,26 +1,32 @@
 <template>
-  <!-- Main container -->
   <nav class="level">
-    <!-- Left side -->
-    <div class="level-left">
-
+    <div class="level-left" v-show="filter.length === 0">
       <div class="level-item is-hidden-mobile">
         <p class="subtitle is-5">
           <strong>{{ totalShots }}</strong> shots
         </p>
       </div>
-
       <div class="level-item">
         <div class="field has-addons">
           <p class="control">
-            <input class="input" @keyup="setFilter()" v-model="searchString" type="text" placeholder="Pesquise um shot">
+            <input :class="{ 'input': true, 'is-disabled': false }" @keyup.enter="setFilter()" v-model="searchString" type="text" placeholder="Pesquise um shot">
           </p>
           <p class="control">
-            <button class="button" @click="setFilter()">
+            <button :class="{ 'button': true, 'is-primary': true, 'is-disabled': searchString.length === 0 }" @click="setFilter()">
               Filtrar
             </button>
           </p>
         </div>
+      </div>
+    </div>
+
+    <div class="level-left" v-show="filter.length > 0">
+      <div class="level-item">
+        <span>Filtro aplicado: </span>
+        <span class="tag is-warning is-medium">
+          {{ filter }}
+          <button class="delete is-small" @click="clearFilter()"></button>
+        </span>
       </div>
     </div>
 
@@ -52,6 +58,10 @@ export default {
   },
   methods: {
     setFilter () {
+      this.updateFilter(this.searchString)
+    },
+    clearFilter () {
+      this.searchString = ''
       this.updateFilter(this.searchString)
     }
   },

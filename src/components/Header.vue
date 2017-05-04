@@ -2,7 +2,7 @@
   <div class="container is-fluid">
     <nav class="nav is-medium">
       <div class="nav-left">
-        <a class="nav-item">
+        <a class="nav-item" @click="goTo('shots')">
           <img :src="'static/images/dribbble_color.svg'" class="logo-header" alt="Bulma logo">
         </a>
       </div>
@@ -41,11 +41,11 @@
       <!-- This "nav-menu" is hidden on mobile -->
       <!-- Add the modifier "is-active" to display it on mobile -->
       <div id="side-menu" :class="{ 'nav-right': true, 'nav-menu': true, 'is-active': isActiveSideMenu, 'animated': true, 'slideInRight': true, 'slideOutRight': slideOut, }">
-        <a class="nav-item" @click="goTo('shots')">
+        <a class="nav-item" @click="goToBySideMenu('shots')">
           Shot list
         </a>
         <span class="nav-item">
-          <a class="button is-primary" @click="goTo('about')">
+          <a class="button is-primary" @click="goToBySideMenu('about')">
             <span class="icon is-small">
               <i class="fa fa-user-circle"></i>
             </span>
@@ -58,12 +58,13 @@
 </template>
 
 <script>
-import { computedMixins } from '@/mixins/main'
+import { computedMixins, methodsMixins } from '@/mixins/main'
 
 export default {
   name: 'DribbbleHeader',
   mixins: [
-    computedMixins
+    computedMixins,
+    methodsMixins
   ],
   data () {
     return {
@@ -72,8 +73,11 @@ export default {
     }
   },
   methods: {
-    goTo (route) {
-      this.$router.push({ name: route })
+    goToBySideMenu (route) {
+      setTimeout(() => {
+        this.setActiveMenu()
+      }, 50)
+      this.goTo(route)
     },
     sideBarClose () {
       this.setActiveMenu()

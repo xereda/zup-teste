@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import jump from 'jump.js'
 import { getShot } from '@/services/shots'
 import { methodsMixins, computedMixins } from '@/mixins/main'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
@@ -42,6 +43,7 @@ export default {
     computedMixins
   ],
   mounted () {
+    jump('#top')
     this.getShotDetail()
   },
   methods: {

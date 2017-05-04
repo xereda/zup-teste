@@ -37,17 +37,23 @@
 </template>
 
 <script>
+import { computedMixins, methodsMixins } from '@/mixins/main'
 import DribbbleCardDetailTable from './DribbbleCardDetailTable.vue'
 import DribbbleCardDetailTags from './DribbbleCardDetailTags.vue'
 
 export default {
   name: 'DribbbleCardDetailBody',
+  mixins: [
+    computedMixins,
+    methodsMixins
+  ],
   components: {
     DribbbleCardDetailTable,
     DribbbleCardDetailTags
   },
   methods: {
     closeShotDetail () {
+      this.setScrollPosition()
       this.$router.push({ name: 'shots' })
     }
   },

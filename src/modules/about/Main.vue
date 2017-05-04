@@ -10,15 +10,15 @@
 
       Made with the following technologies and methodologies:
 
-      - Yarn Modules Manager (A Facebook project)
+      - Yarn Modules Manager
       - Ecmascript 6
       - Vue.js 2
         . vue-cli / webpack
-        . vuex (Flux Application Architecture)
+        . vuex (Flux Architecture)
         . vue-router
       - Bulma Framework (Flexbox)
       - Font Awesome (Icons)
-      - SCSS
+      - SCSS (scss/config.scss)
       - SVG Vector Images
       - Responsive Layout
       - Infinite Scroll
