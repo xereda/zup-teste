@@ -5,6 +5,16 @@
 ## Build Setup
 
 ``` bash
+
+# Instrucoes para execucao do teste
+# Apos clonar localmente o repositorio, execute o shell script:
+./.local-server
+
+# O comando acima baixara as dependencias com o yarn e executara
+# o servidor local
+
+# Caso prefira o npm, basta seguir os passos abaixo:
+
 # install dependencies
 npm install
 
