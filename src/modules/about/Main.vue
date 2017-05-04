@@ -15,8 +15,9 @@
       - Vue.js 2
         . vue-cli / webpack
         . vuex (Flux Architecture)
-        . vue-router
+        . vue-router (SPA and Routes)
       - Bulma Framework (Flexbox)
+      - Responsive Sidemenu
       - Font Awesome (Icons)
       - SCSS (scss/config.scss)
       - SVG Vector Images
