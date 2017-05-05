@@ -22,7 +22,8 @@
             <span class="icon">
               <i :class="{ 'fa': true, 'fa-eye': !showDescription, 'fa fa-eye-slash': showDescription }"></i>
             </span>
-            <span>{{ labelButton }}</span>
+            <span class="is-hidden-tablet">...</span>
+            <span class="is-hidden-mobile">{{ labelButton }}</span>
           </a>
         </div>
       </div>

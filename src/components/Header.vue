@@ -8,7 +8,12 @@
       </div>
 
       <div class="nav-center is-hidden-tablet-only" :href="config.urls.facebook">
-        <a class="nav-item">
+        <a class="nav-item is-hidden-mobile" :href="config.urls.twitter">
+          <span class="icon">
+            <i class="fa fa-twitter"></i>
+          </span>
+        </a>
+        <a class="nav-item is-hidden-mobile" :href="config.urls.facebook">
           <span class="icon">
             <i class="fa fa-facebook"></i>
           </span>
@@ -16,11 +21,6 @@
         <a class="nav-item" :href="config.urls.github">
           <span class="icon">
             <i class="fa fa-github"></i>
-          </span>
-        </a>
-        <a class="nav-item" :href="config.urls.twitter">
-          <span class="icon">
-            <i class="fa fa-twitter"></i>
           </span>
         </a>
         <a class="nav-item" :href="config.urls.linkedin">

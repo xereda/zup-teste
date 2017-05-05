@@ -2,7 +2,7 @@
   <div class="">
     <dribbble-search :total-shots="filteredShots.length"></dribbble-search>
     <div class="columns is-mobile is-multiline">
-      <div class="column is-narrow" :ref="shot.id" v-for="shot in filteredShots" :style="'background-color: ' + shot.color">
+      <div class="column is-narrow is-hidden-mobile" :ref="shot.id" v-for="shot in filteredShots">
         <dribbble-card @click.native="openDetail(shot.id)"
                        :shot-id="shot.id"
                        :card-width="getCardWidth"
@@ -12,6 +12,17 @@
                        :user-name="shot.user.name"
                        :user-avatar="shot.user.avatar"
                        class="dribbble-card"></dribbble-card>
+      </div>
+      <div :class="{ 'column': true, 'is-6': isSmallView, 'is-hidden-tablet': true }" :ref="shot.id" v-for="shot in filteredShots">
+        <dribbble-card-mobile @click.native="openDetail(shot.id)"
+                       :shot-id="shot.id"
+                       :card-width="getCardWidth"
+                       :image="getImagePreview(shot.images)"
+                       :likes="shot.likes"
+                       :comments="shot.comments"
+                       :user-name="shot.user.name"
+                       :user-avatar="shot.user.avatar"
+                       class="dribbble-card"></dribbble-card-mobile>
       </div>
       <div v-infinite-scroll="fetchShots" infinite-scroll-disabled="disabledInfinite" infinite-scroll-distance="10">
       </div>
@@ -23,6 +34,7 @@
 import Vue from 'vue'
 import { methodsMixins, computedMixins } from '@/mixins/main'
 import DribbbleCard from '@/components/Card.vue'
+import DribbbleCardMobile from '@/components/CardMobile.vue'
 import DribbbleSearch from '@/components/Search.vue'
 import { getAllPaged as getShots } from '@/services/shots'
 
@@ -102,6 +114,7 @@ export default {
   },
   components: {
     DribbbleCard,
+    DribbbleCardMobile,
     DribbbleSearch
   },
   directives: {

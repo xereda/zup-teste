@@ -5,10 +5,14 @@
     <h2 class="subtitle">Jackson Ricardo Schroeder</h2>
     <hr>
     <pre class="has-text-left">
-      E-mail: jacksonrs@gmail.com
-      Linkedin: https://www.linkedin.com/in/xereda/
+      E-mail:
+      jacksonrs@gmail.com
 
-      Made with the following technologies and methodologies:
+      Linkedin:
+      linkedin.com/in/xereda/
+
+      Made with the following
+      technologies and methodologies:
 
       - Yarn Modules Manager
       - Ecmascript 6
@@ -23,15 +27,29 @@
       - SVG Vector Images
       - Responsive Layout
       - Infinite Scroll
-      - Axios (Promise based HTTP client)
+      - Axios
 
     </pre>
+    <hr>
+    <div class="content has-text-left">
+      <a class="button is-primary" @click="goTo('shots')">
+        <span class="icon">
+          <i :class="{ 'fa': true, 'fa-list': true }"></i>
+        </span>
+        <span class="">Shot list</span>
+      </a>
+    </div>
   </div>
 </template>
 
 <script>
+import { methodsMixins } from '@/mixins/main'
+
 export default {
   name: 'DribbbleAboutDeveloper',
+  mixins: [
+    methodsMixins
+  ],
   data () {
     return {
     }

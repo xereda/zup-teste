@@ -13,7 +13,7 @@
         </div>
       </div>
       <!-- Hero footer: will stick at the bottom -->
-      <div class="hero-foot custom-margin-left">
+      <div class="hero-foot custom-margin-left" v-show="$route.name !== 'about'">
         <nav class="tabs is-boxed">
           <div class="container is-fluid">
             <ul>

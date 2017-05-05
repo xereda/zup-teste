@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import jump from 'jump.js'
 import { computedMixins, methodsMixins } from '@/mixins/main'
 import DribbbleCardDetailTable from './DribbbleCardDetailTable.vue'
 import DribbbleCardDetailTags from './DribbbleCardDetailTags.vue'
@@ -53,8 +54,8 @@ export default {
   },
   methods: {
     closeShotDetail () {
-      this.setScrollPosition()
-      this.$router.push({ name: 'shots' })
+      jump('#top')
+      this.goTo('shots')
     }
   },
   props: [
